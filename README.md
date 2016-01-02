@@ -1,7 +1,7 @@
 # Usage
 
 ```
-docker create \
+docker run -d \
     --name syncthing \
     -p 8384:8384 \
     -p 22000:22000/tcp \
