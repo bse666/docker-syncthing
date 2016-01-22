@@ -7,7 +7,7 @@ rm -rf /var/cache/apk/*
 # build syncthing
 RUN export GOPATH=/go && \
 mkdir -p /go/src/github.com/syncthing && \
-git clone -b v0.11 https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
+git clone -b v0.10 https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
 cd /go/src/github.com/syncthing/syncthing/ && \
 go run build.go && \
 cd / && \
