@@ -5,7 +5,9 @@ docker run -d \
     --name syncthing \
     -p 8384:8384 \
     -p 22000:22000/tcp \
-    -p 21027:21027/udp \
+    -p 21025:21025/udp \
+    -p 21026:21026/udp \
+    -p 22026:22026/udp \
     -v <path/to/config>:/config \
     -v <path/to/syncfiles>:/syncfolder \
     mrbene93/syncthing
