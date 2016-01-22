@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.3
 
 # install needed dependencies
 RUN apk --update add go git && \
@@ -27,7 +27,5 @@ RUN chmod +x /start.sh
 VOLUME ["/config", "/syncfolder"]
 
 EXPOSE 8384 22000/tcp 21027/udp
-
-WORKDIR /
 
 CMD ["/start.sh"]
