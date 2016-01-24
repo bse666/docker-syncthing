@@ -5,8 +5,8 @@ RUN apk --update add go git && \
 rm -rf /var/cache/apk/*
 
 # build syncthing
-RUN export GOPATH=/go && \
-mkdir -p /go/src/github.com/syncthing && \
+RUN mkdir -p /go/src/github.com/syncthing && \
+export GOPATH=/go && \
 git clone -b v0.12 https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
 cd /go/src/github.com/syncthing/syncthing/ && \
 go run build.go && \
