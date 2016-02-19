@@ -1,4 +1,6 @@
-FROM alpine:3.3
+FROM alpine:latest
+
+ENV SYNCTHING_VERSION="v0.12"
 
 # install needed dependencies
 RUN apk --update add go git && \
@@ -7,7 +9,7 @@ rm -rf /var/cache/apk/*
 # build syncthing
 RUN mkdir -p /go/src/github.com/syncthing && \
 export GOPATH=/go && \
-git clone -b v0.12 https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
+git clone -b $SYNCTHING_VERSION https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
 cd /go/src/github.com/syncthing/syncthing/ && \
 go run build.go && \
 cd / && \
