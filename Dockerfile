@@ -1,7 +1,5 @@
 FROM alpine:latest
 
-ENV SYNCTHING_VERSION="v0.12"
-
 # install needed dependencies
 RUN apk --update add go git && \
 rm -rf /var/cache/apk/*
@@ -9,8 +7,12 @@ rm -rf /var/cache/apk/*
 # build syncthing
 RUN mkdir -p /go/src/github.com/syncthing && \
 export GOPATH=/go && \
-git clone -b $SYNCTHING_VERSION https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
+git clone https://github.com/syncthing/syncthing.git /go/src/github.com/syncthing/syncthing && \
 cd /go/src/github.com/syncthing/syncthing/ && \
+git fetch --tags && \
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`) && \
+echo "checking out Tag: $latestTag" && \
+git checkout $latestTag && \
 go run build.go && \
 cd / && \
 rm -r /go/src/github.com/syncthing/syncthing/.git* /go/src/github.com/syncthing/syncthing/build.* && \
