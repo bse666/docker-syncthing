@@ -1,0 +1,16 @@
+services:
+  - docker
+
+script:
+  - docker build -t bse666/docker-syncthing .
+  - docker run --name syncthing -d bse666/docker-syncthing
+  - docker ps -a
+  
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push bse666/docker-syncthing;
+    fi
+
+notifications:
+  email: false
