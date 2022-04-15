@@ -10,4 +10,4 @@ docker run -d \
     -v <path/to/syncfiles>:/syncfolder \
     bse666/docker-syncthing
 ```
-Access the Syncthing-WebUI via http://localhost:8384/. The default share folder, which syncthing creates, when it's first run is not mountable from outside containers.
+Access  the Syncthing-WebUI via http://localhost:8384/. The default share folder, which syncthing creates, when it's first run is not mountable from outside containers.
